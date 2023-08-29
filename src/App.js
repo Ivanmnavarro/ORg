@@ -11,27 +11,7 @@ function App() {
 
   const [mostrarFormulario, actualizarMostrar] = useState(false)
   const [colaboradores, acualizarColaboradores] = useState([])
-
-  const cambiarMostrar = () => {
-    actualizarMostrar(!mostrarFormulario)
-  }
-  //resgistrar colaborador
-
-  const registrarColaborador = (colaborador) => {
-    console.log("Nuevo colaborador", colaborador)
-
-    //Spread operator
-    acualizarColaboradores([...colaboradores, colaborador])
-  }
-
-  //eliminar colaborador
-  const eliminarColaborador = () => { 
-    console.log("Eliminar colaborador")
-  }
-
-  //lista equipos
-
-  const equipos = [
+  const [equipos, actualizarEquipos] = useState([
     {
       titulo: "Programación",
       colorPrimario: "#57C278",
@@ -68,7 +48,39 @@ function App() {
       colorSecundario: "#FFEEDF"
     }
 
-  ]
+  ])
+
+  const cambiarMostrar = () => {
+    actualizarMostrar(!mostrarFormulario)
+  }
+  //resgistrar colaborador
+
+  const registrarColaborador = (colaborador) => {
+    console.log("Nuevo colaborador", colaborador)
+
+    //Spread operator
+    acualizarColaboradores([...colaboradores, colaborador])
+  }
+
+  //eliminar colaborador
+
+  const eliminarColaborador = () => {
+    console.log("Eliminar colaborador")
+  }
+
+  //actualizar color de equipo
+
+  const actualizarColor = (color, titulo) => {
+    console.log("Actualizar: ", color, titulo)
+    const equiposActualizados = equipos.map((equipo) => {
+      if (equipo.titulo === titulo){
+        equipo.colorPrimario = color
+      }
+      return equipo
+    })
+
+    actualizarEquipos(equiposActualizados)
+  }
 
   return (
     <div className="App">
@@ -88,6 +100,7 @@ function App() {
           key={equipo.titulo}
           colaboradores={colaboradores.filter(colaborador => colaborador.equipo === equipo.titulo)}
           eliminarColaborador={eliminarColaborador}
+          actualizarColor={actualizarColor}
         />)
       }
 
