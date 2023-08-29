@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { v4 as uuid } from 'uuid'
+import { v4 as uuid } from 'uuid';
 import './App.css';
 import Header from './components/Header';
 import Formulario from './components/Formulario';
@@ -57,7 +57,7 @@ function App() {
     }
 
   ])
- 
+
   const cambiarMostrar = () => {
     actualizarMostrar(!mostrarFormulario)
   }
@@ -72,8 +72,10 @@ function App() {
 
   //eliminar colaborador
 
-  const eliminarColaborador = () => {
-    console.log("Eliminar colaborador")
+  const eliminarColaborador = (id) => {
+    console.log("Eliminar colaborador", id)
+    const nuevosColaboradores = colaboradores.filter((colaborador) => colaborador.id !== id)
+    acualizarColaboradores(nuevosColaboradores)
   }
 
   //actualizar color de equipo

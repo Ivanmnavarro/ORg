@@ -24,7 +24,6 @@ const Equipo = (props) => {
                         actualizarColor(evento.target.value, id)
                     }}
 
-
                 />
                 <h3 style={estiloTitulo}>{titulo}</h3>
                 <div className="colaboradores">

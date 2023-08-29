@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { v4 as uuid } from 'uuid';
 import "./Formulario.css"
 import CampoTexto from "../CampoTexto"
 import ListaOpciones from "../ListaOpciones"
@@ -19,7 +20,9 @@ const Formulario = (props) => {
             nombre,
             puesto,
             foto,
-            equipo
+            equipo,
+            id: uuid()
+
         }
         registrarColaborador(datosAEnviar)
     }
