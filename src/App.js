@@ -10,7 +10,7 @@ import Colaborador from './components/Colaborador/index';
 
 function App() {
 
-  const [mostrarFormulario, actualizarMostrar] = useState(false)
+  const [mostrarFormulario, actualizarMostrar] = useState(true)
   const [colaboradores, acualizarColaboradores] = useState([])
   const [equipos, actualizarEquipos] = useState([
     {
@@ -91,7 +91,13 @@ function App() {
 
     actualizarEquipos(equiposActualizados)
   }
+  //crear equipo
 
+  const crearEquipo = (nuevoEquipo) => {
+    console.log(nuevoEquipo)
+    actualizarEquipos([...equipos, { ...nuevoEquipo, id: uuid() }])
+
+  }
   return (
     <div className="App">
       <Header />
@@ -99,6 +105,7 @@ function App() {
         mostrarFormulario && <Formulario
           equipos={equipos.map((equipo) => equipo.titulo)}
           registrarColaborador={registrarColaborador}
+          crearEquipo={crearEquipo}
         />
       }
 
